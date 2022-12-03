@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const NoteState = (props) => {
   const host = "http://localhost:8000/api/notes"
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzRiY2I1MGNhZDA5YTI0ZTY5MWQ1In0sImlhdCI6MTY2OTg1MzA1NH0.LjVz0RmQA5cFsiIbK3VZyELH8--YtpBlL_ccmwCMxfQ";
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial)
 
@@ -14,16 +15,16 @@ const NoteState = (props) => {
     const response = await fetch(`${host}/getnotes`,
       {
         method: 'GET',
-        mode: 'no-cors',
+        // mode: 'no-cors',
         headers: {
           "access-control-allow-origin": "*",
-          'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzRiY2I1MGNhZDA5YTI0ZTY5MWQ1In0sImlhdCI6MTY2OTg1MzA1NH0.LjVz0RmQA5cFsiIbK3VZyELH8--YtpBlL_ccmwCMxfQ',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`
         }
       })
     const json = await response.json()
     console.log(json)
- setNotes(json)
+    //  setNotes(json)
   }
 
 
@@ -36,7 +37,7 @@ const NoteState = (props) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzRiY2I1MGNhZDA5YTI0ZTY5MWQ1In0sImlhdCI6MTY2OTg1MzA1NH0.LjVz0RmQA5cFsiIbK3VZyELH8--YtpBlL_ccmwCMxfQ"
+        'auth-token': `${token}`
       },
       body: JSON.stringify({ title, description, tag })
     });
