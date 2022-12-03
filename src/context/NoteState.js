@@ -14,6 +14,7 @@ const NoteState = (props) => {
     const response = await fetch(`${host}/getnotes`,
       {
         method: 'GET',
+        mode: 'no-cors',
         headers: {
           "access-control-allow-origin": "*",
           'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzRiY2I1MGNhZDA5YTI0ZTY5MWQ1In0sImlhdCI6MTY2OTg1MzA1NH0.LjVz0RmQA5cFsiIbK3VZyELH8--YtpBlL_ccmwCMxfQ',
