@@ -6,7 +6,7 @@ const Notes = require("../models/Notes")
 
 
 //1. GET all the notes
-router.get('/fatchallnotes', fatchuser, async (req, res) => {
+router.get('/getnotes', fatchuser, async (req, res) => {
     try {
         const notes = await Notes.find({ user: req.user.id });
         res.json(notes);

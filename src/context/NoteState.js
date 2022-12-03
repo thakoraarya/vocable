@@ -11,7 +11,7 @@ const NoteState = (props) => {
   // Get all Notes
   const getNotes = async () => {
     // API Call
-    const response = await fetch(`${host}/fatchallnotes`,
+    const response = await fetch(`${host}/getnotes`,
       {
         method: 'GET',
         headers: {
