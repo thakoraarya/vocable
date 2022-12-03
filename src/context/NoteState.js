@@ -11,18 +11,18 @@ const NoteState = (props) => {
   // Get all Notes
   const getNotes = async () => {
     // API Call
-    const response = await fetch(`${host}/fetchallnotes`,
+    const response = await fetch(`${host}/fatchallnotes`,
       {
-        method: 'POST',
+        method: 'GET',
         headers: {
+          "access-control-allow-origin": "*",
           'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzRiY2I1MGNhZDA5YTI0ZTY5MWQ1In0sImlhdCI6MTY2OTg1MzA1NH0.LjVz0RmQA5cFsiIbK3VZyELH8--YtpBlL_ccmwCMxfQ',
           'Content-Type': 'application/json'
         }
       })
-    // convert json to text
-    // const json = await
-    // console.log(json)
-    console.log(await response.json());
+    const json = await response.json()
+    console.log(json)
+ setNotes(json)
   }
 
 
