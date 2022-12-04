@@ -10,27 +10,24 @@ const NoteState = (props) => {
 
 
   // Get all Notes
-  const getNotes = async () => {
+  const getNotes = () => {
     // API Call
-    const response = await fetch(`{${host}/getnotes}`,
+    fetch(`{${host}/getnotes}`,
       {
         method: 'GET',
         headers: {
-          "access-control-allow-origin": "*",
           'Content-Type': "application/json",
-          // 'auth-token': `${token}`
-          'auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM3YzRiY2I1MGNhZDA5YTI0ZTY5MWQ1In0sImlhdCI6MTY2OTg1MzA1NH0.LjVz0RmQA5cFsiIbK3VZyELH8--YtpBlL_ccmwCMxfQ"
+          'auth-token': `${token}`
         }
-      })
-    const json = await response.json()
-    console.log(json)
+      }).then((res) => res.json())
+      .then(json => {
+        console.log(json)
+      });
   }
-
 
 
   // Add a Note
   const addNote = async (title, description, tag) => {
-    // TODO: API Call
     // API Call
     const response = await fetch(`${host}/addnote`, {
       method: 'POST',

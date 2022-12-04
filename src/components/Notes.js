@@ -4,9 +4,9 @@ import AddNote from './AddNote'
 import NoteItem from './NoteItem'
 const Notes = () => {
     const context = useContext(NoteContext);
-    const { notes, getNotes } = context;
+    const { notes,getNotes } = context;
     useEffect(() => {
-        getNotes();
+ getNotes();
     })
     return (
         <>
